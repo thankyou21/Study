@@ -1,0 +1,41 @@
+package com.cg.demo.ui;
+
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+
+
+import com.cg.demo.entities.Mobile;
+
+public class MobileMain 
+{
+	public static void main(String arg[])
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+		EntityManager em = emf.createEntityManager();
+		Scanner sc = new Scanner(System.in);
+		
+		//Inserting record
+		Mobile mobInsert = new Mobile();
+		System.out.println("Enter Mobile Name: ");
+		mobInsert.setName(sc.next());
+		System.out.println("Enter Mobile Price: ");
+		mobInsert.setPrice(sc.nextDouble());
+		System.out.println("Enter Mobile Quantity: ");
+		mobInsert.setQuantity(sc.nextInt());
+		
+		em.getTransaction().begin();
+		em.persist(mobInsert);
+		em.getTransaction().commit();
+		
+		System.out.println("Mobile Details are stored");
+		
+		//Retrieving from table and printing the record for id=1001
+		Mobile mobRetrive = em.find(Mobile.class,1001);
+		System.out.println(mobRetrive);
+	}
+
+}

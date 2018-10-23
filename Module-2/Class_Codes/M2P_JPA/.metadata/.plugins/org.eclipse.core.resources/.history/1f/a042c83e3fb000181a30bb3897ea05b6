@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!--  <context:component-scan base-package="com.cg.demo" />-->
+	<bean id="emp1" class="com.cg.assignment.Employee">
+		<property name="employeeId" value="1001"/>
+		<property name="employeeName" value="Rishav"/>
+		<property name="salary" value="40510"/>
+		<property name="businessUnit" value="A5"/>
+		<property name="age" value="22"/>
+	</bean> 
+	<bean id="emp2" class="com.cg.assignment.Employee">
+		<property name="employeeId" value="1002"/>
+		<property name="employeeName" value="Vahsir"/>
+		<property name="salary" value="40510"/>
+		<property name="businessUnit" value="A5"/>
+		<property name="age" value="22"/>
+	</bean>
+</beans>

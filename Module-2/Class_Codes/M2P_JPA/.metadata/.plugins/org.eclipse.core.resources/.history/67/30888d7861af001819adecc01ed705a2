@@ -1,0 +1,74 @@
+package com.cg.assignment.ui;
+
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.cg.assignment.bean.Author;
+
+public class AuthorMain 
+{
+	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+	static EntityManager em = emf.createEntityManager();
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String args[])
+	{
+		System.out.println("Welcome to the portal");
+		int choice;
+		while(true)
+		{
+			System.out.println("\n\n1>> Add Author\t2>>Find Author\t3>>Update Author\t4>>Delete Author\t5>>Exit\nChoose your operation:");
+			choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1: addAuthor(); break;
+			case 2: findAuthor(); break;
+			case 3: editAuthor(); break;
+			case 4: removeAuthor(); break;
+			case 5: System.out.println("\nThank you!");System.exit(0);
+			default: System.out.println("Invalid choice! Try again..."); break;
+			}
+		}
+	}
+	
+	public static void addAuthor()
+	{
+		//insert
+		Author newWriter = new Author();
+		System.out.println("Enter Author First Name: ");
+		newWriter.setFirstName(sc.next());
+		System.out.println("Enter Author Middle Name (In case No middle type 'x'):");
+		newWriter.setMiddleName(sc.next());
+		System.out.println("Enter Author Last Name: ");
+		newWriter.setLastName(sc.next());
+		System.out.println("Enter Author Phone No. ");
+		newWriter.setPhoneNo(sc.next());
+		
+		em.getTransaction().begin();
+		em.persist(newWriter);
+		em.getTransaction().commit();
+			
+		System.out.println("1 row inserted.");
+	}
+	
+	public static void findAuthor()
+	{
+		System.out.println("Enter Author ID:");
+		int authorId = sc.nextInt();
+		Author findAuthor = em.find(Author.class,authorId);
+		System.out.println(findAuthor);
+	}
+	
+	public static void editAuthor()
+	{
+		
+	}
+	
+	public static void removeAuthor()
+	{
+		
+	}
+}

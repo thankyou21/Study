@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="com.cg.controller" />
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"  p:prefix="/" p:suffix=".jsp" />
+	 <bean id="firstCtlr" class="com.cg.demo.MyController"/>
+  
+  <bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="1" />
+		<property name="mappings">
+			<props>
+				<prop key="/start.obj">firstCtlr</prop>
+			</props>
+		</property>
+  </bean>
+	
+  <bean id="beanMapping" 
+    class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+       <property name="order" value="2" />
+  </bean>
+  
+  <bean name="/start.obj" class="com.cg.demo.MyController"/>
+</beans>

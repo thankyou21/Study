@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { Component } from './emp.component';
+import { Component } from '@angular/Forms/form';
+
+@Component({
+  selector: 'my-form',
+  templateUrl: './myform.component.html',
+})
+
+export class MyFormComponent
+{
+	emp:Employee;
+	empArr:Employee[];
+	
+	saveDate(frm1:NgForm):void
+	{
+		id:number = frm1.control.id.balue;
+		name:string = frm1.control.name.value;
+		this.empArr.push({empId:id,empName:name});
+	}
+}

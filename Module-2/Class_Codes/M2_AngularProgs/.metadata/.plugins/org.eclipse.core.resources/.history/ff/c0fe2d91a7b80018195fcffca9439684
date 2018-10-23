@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 style="color:blue; background-color:yellow">
+    {{ title }}, Welcome to Capgemini!
+  </h1>
+  
+  <my-emp></my-emp>
+  
+  <img [src]="source" [width]="width" [height]="height"><br>
+  
+  <button (click)="changeImage()">Change</button>
+  
+  <table>
+  	<tr *ngFor="s of scrArr">
+  		<td>{{s}}</td>
+  	</tr>
+  </table>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form #frm1="ngForm" (ngSubmit)="saveData(frm1)">
+		Enter ID:
+		<input type="text" name="id" [(ngModel)] = "emp.empId"/>
+		Enter Name:
+		<input type="text" name="name" [(ngModel)] = "emp.empName"/>
+		Enter Sal:
+		<input type="text" name="sal" [(ngModel)] = "emp.sal"/>
+		<input type="submit" value = "Add"/>
+	</form>
+	
+	<table>
+		<tr *ngFor="let e of empArr">
+			<td>{{e.empId}}</td>
+			<td>{{e.empName}}</td>
+		</tr>
+	</table>
+</body>
+</html>

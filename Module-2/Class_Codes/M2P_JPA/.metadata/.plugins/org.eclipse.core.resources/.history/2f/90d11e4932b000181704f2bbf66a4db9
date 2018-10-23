@@ -1,0 +1,15 @@
+package com.cg.assignment;
+
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+
+public class EmployeeMain 
+{
+	public static void main()
+	{
+		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("anno.xml"));
+		Employee emp = (Employee) factory.getBean("employeeLab1");
+		System.out.println(emp);
+	}
+}

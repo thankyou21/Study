@@ -1,0 +1,40 @@
+package com.cg.demo;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("Employee")
+public class Employee 
+{
+	@Value("Hinjewadi")
+	private int empId;
+	@Value("Hinjewadi")
+	private String ename;
+	@autowired
+	private Address address;
+	
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+	public String getEname() {
+		return ename;
+	}
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", ename=" + ename + ", address="
+				+ address + "]";
+	}
+	
+}

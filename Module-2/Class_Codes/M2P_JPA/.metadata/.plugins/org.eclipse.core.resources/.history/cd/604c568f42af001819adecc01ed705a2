@@ -1,0 +1,22 @@
+package com.cg.demo.entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Mobiles")
+
+public class Mobile 
+{
+	@Id
+	@Column(name="name")
+	private int mobileId;
+	
+	@Column(name="mobileid")
+	private int mobileId;
+	
+	@Column(name="mobileid")
+	private int mobileId;
+	
+	@Column(name="mobileid")
+	private int mobileId;
+}

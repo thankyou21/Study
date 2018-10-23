@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component
+({
+	selector: 'my-emp', 
+	template: `<h3>{{empId}}</h3> <h3>{{empName}}</h3> <h3>{{sal}}</h3>`,
+})
+export class Employee
+{
+	empId:number=1001;
+	empName:string="Rishav";
+	sal:number=50000;
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa 
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.cg" />
+
+	<bean id="myBeansValidator"
+    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <mvc:annotation-driven validator="myBeansValidator"/>	
+	
+	
+	<bean 
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+	 p:prefix="/" p:suffix=".jsp" />
+
+	
+	 <!-- This bean is required to load ORM persistence and related annotations -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	 
+	<!-- This bean will hold references to our database -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@10.51.103.201:1521:ORCL11G" />
+		<property name="username" value="lab1btrg11" />
+		<property name="password" value="lab1boracle" />
+	</bean>
+	
+	<!-- Spring way of entity manager factory configuration -->
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+          <property name="dataSource" ref="dataSource"/>
+          <property name="packagesToScan" value="com.cg.entities"/>
+          <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
+          <property name="jpaPropertyMap">
+              <map>
+                  <entry key="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+                  <entry key="hibernate.hbm2ddl.auto" value="update"/>
+              </map>
+          </property>
+      </bean>
+      
+	<!-- This bean will handle all transaction within an application -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+	
+	<!-- This is required to handle transactions via Annotations like @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<jpa:repositories base-package="com.cg.dao"
+                      entity-manager-factory-ref="entityManagerFactory"
+                      transaction-manager-ref="transactionManager"/>
+
+</beans>
+

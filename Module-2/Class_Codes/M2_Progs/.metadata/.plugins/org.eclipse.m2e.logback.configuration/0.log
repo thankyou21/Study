@@ -1,0 +1,6 @@
+2018-09-21 10:15:29,178 [Worker-238] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.0.5.RELEASE/spring-boot-starter-parent-2.0.5.RELEASE.pom
+2018-09-21 10:15:29,490 [Worker-238] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 1 sec
+2018-09-21 10:22:49,584 [Worker-241] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 0 sec
+2018-09-21 10:27:44,021 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-09-21 10:27:45,394 [Worker-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.0.5.RELEASE/spring-boot-starter-parent-2.0.5.RELEASE.pom
+2018-09-21 10:27:45,456 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec

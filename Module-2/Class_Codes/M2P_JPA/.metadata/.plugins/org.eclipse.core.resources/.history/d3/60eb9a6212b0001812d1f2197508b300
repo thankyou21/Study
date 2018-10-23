@@ -1,0 +1,30 @@
+package com.cg.demo;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+public class HelloMain {
+
+	public static void main(String[] args) 
+	{
+		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("anno.xml"));
+		HelloBean bean = (HelloBean) factory.getBean("hBean");
+		System.out.println(bean.helloWorld());
+		
+		//eg. of setter injection 
+		Address myAddress1 = (Address) factory.getBean("addressSetterInjection");
+		System.out.println(myAddress1);
+		
+		//eg. of constructor injection
+		Address myAddress2 = (Address) factory.getBean("addressConstructorInjection");
+		System.out.println(myAddress2);
+		
+		//eg. of wiring of beans
+		Employee emp1 = (Employee) factory.getBean("employee");
+		System.out.println(emp1);
+		
+		Employee emp2 = (Employee) factory.getBean("employeeAutoWireByName");
+		System.out.println(emp1);
+	}
+
+}
+                                                 

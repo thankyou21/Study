@@ -1,0 +1,14 @@
+package com.cg.demo;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+public class HelloMain {
+
+	public static void main(String[] args) 
+	{
+		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("anno.xml"));
+		HelloBean bean = (HelloBean) factory.getBean("hBean");
+		System.out.println(bean.helloWorld());
+	}
+
+}

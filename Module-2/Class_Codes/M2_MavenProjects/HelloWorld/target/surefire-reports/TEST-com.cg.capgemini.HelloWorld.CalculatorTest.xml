@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cg.capgemini.HelloWorld.CalculatorTest" time="0" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\Rishav 157980\M2_MavenProjects\HelloWorld\target\test-classes;D:\Rishav 157980\M2_MavenProjects\HelloWorld\target\classes;D:\Rishav 157980\Rishav-MavenProjects\junit\junit\4.11\junit-4.11.jar;D:\Rishav 157980\Rishav-MavenProjects\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jre1.8.0_72\bin"/>
+    <property name="sun.java.command" value="C:\Users\ADM-IG~1\AppData\Local\Temp\surefire6308715571301456448\surefirebooter7391929131801162102.jar C:\Users\ADM-IG-HWDLAB1B\AppData\Local\Temp\surefire6308715571301456448 2018-08-31T16-35-02_531-jvmRun1 surefire3856858556365776125tmp surefire_08807046166796943406tmp"/>
+    <property name="surefire.test.class.path" value="D:\Rishav 157980\M2_MavenProjects\HelloWorld\target\test-classes;D:\Rishav 157980\M2_MavenProjects\HelloWorld\target\classes;D:\Rishav 157980\Rishav-MavenProjects\junit\junit\4.11\junit-4.11.jar;D:\Rishav 157980\Rishav-MavenProjects\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\ADM-IG-HWDLAB1B"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jre1.8.0_72"/>
+    <property name="basedir" value="D:\Rishav 157980\M2_MavenProjects\HelloWorld"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\ADM-IG~1\AppData\Local\Temp\surefire6308715571301456448\surefirebooter7391929131801162102.jar"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jre1.8.0_72\lib\resources.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\rt.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\jsse.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\jce.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\charsets.jar;C:\Program Files (x86)\Java\jre1.8.0_72\lib\jfr.jar;C:\Program Files (x86)\Java\jre1.8.0_72\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="java.runtime.version" value="1.8.0_72-b15"/>
+    <property name="user.name" value="ADM-IG-HWDLAB1B"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="6.1"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jre1.8.0_72\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="localRepository" value="D:\Rishav 157980\Rishav-MavenProjects"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\ADM-IG~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="1.8.0_72"/>
+    <property name="user.dir" value="D:\Rishav 157980\M2_MavenProjects\HelloWorld"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jre1.8.0_72\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre1.8.0_72/bin/client;C:/Program Files (x86)/Java/jre1.8.0_72/bin;C:/Program Files (x86)/Java/jre1.8.0_72/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\CapgeminiScripts\Support Tools\;D:\Eclipse_Luna\eclipse;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.72-b15"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jre1.8.0_72\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="Test1" classname="com.cg.capgemini.HelloWorld.CalculatorTest" time="0"/>
+  <testcase name="Test2" classname="com.cg.capgemini.HelloWorld.CalculatorTest" time="0"/>
+</testsuite>

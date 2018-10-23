@@ -1,0 +1,15 @@
+package com.cg.capgemini.HelloWorld;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+
+public class CalculatorTest 
+{
+	@Test
+	public void Test1()
+	{
+		Calculator cal = new Calculator();
+		Assert.assertEquals(6,cal.add(4,6));
+	}
+}

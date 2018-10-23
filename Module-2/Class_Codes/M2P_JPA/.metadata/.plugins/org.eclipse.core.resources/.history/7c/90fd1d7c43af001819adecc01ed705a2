@@ -1,0 +1,55 @@
+package com.cg.demo.entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Mobiles")
+
+public class Mobile 
+{
+	@Id
+	@Column(name="name")
+	private int mobileId;
+	
+	@Column(name="name")
+	private int name;
+	
+	@Column(name="price")
+	private int price;
+	
+	@Column(name="quantity")
+	private int quantity;
+
+	public int getMobileId() {
+		return mobileId;
+	}
+
+	public void setMobileId(int mobileId) {
+		this.mobileId = mobileId;
+	}
+
+	public int getName() {
+		return name;
+	}
+
+	public void setName(int name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+}

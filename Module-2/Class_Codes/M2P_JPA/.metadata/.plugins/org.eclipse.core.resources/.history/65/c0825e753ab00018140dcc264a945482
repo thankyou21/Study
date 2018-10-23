@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!-- <context:component-scan base-package="com.cg.anno" /> -->
+	<bean id="hBean" class="com.cg.demo.HelloBean"/>
+	
+	<!--  Eg of setter injection: this calls the setter method i.e. setAddressLine() and setCity() -->
+	<bean id="addressSetterInjection" class="com.cg.demo.Address">
+		<property name="addressLine" value="Talwade"/>
+		<property name="city" value="Pune"/>
+	</bean> 
+	
+	<!--  Eg of constructor injection: this calls the parameterized constructor of Address Class -->
+	<bean id="addressConstructorInjection" class="com.cg.demo.Address">
+		<constructor-arg index="0" value="Hinjewadi"/>
+		<constructor-arg index="1" value="Pune"/>
+	</bean>
+	
+	<!--  Eg of wiring of beans : this injects Address object into Employee object-->
+	<bean id="employee" class="com.cg.demo.Employee">
+		<property name="empId" value="1001"/>
+		<property name="ename" value="Rishav"/>
+		<property name="address" ref="addressConstructorInjection"/>
+	</bean>
+	
+	<!--  Eg of auto wiring of beans : here the property name should be same as the autowire -->
+	<bean id="employeeAutoWireByName" class="com.cg.demo.Employee" autowire="byName"> <!-- by name -->
+		<property name="empId" value="1001"/>
+		<property name="ename" value="Rishav"/>
+	</bean>
+	<bean id="address" class="com.cg.demo.Address"> <!--  setter injection -->
+		<property name="addressLine" value="Talwade"/>
+		<property name="city" value="Pune"/>
+	</bean> 
+	
+	<!--  -->
+	<bean id="placeHolderConfig" 
+	class=“org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+     <property name="location" value="classpath:data.properties" />
+	</bean>
+	<bean id="emp" class="com.cg.demo.Employee" autowire="byType">
+		<property name="empid" value="${id}"/>
+		<property name="empid" value="${name}"/>
+	</bean>
+
+</beans>

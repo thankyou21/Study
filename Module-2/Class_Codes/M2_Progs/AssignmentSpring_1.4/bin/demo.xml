@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!--  <context:component-scan base-package="com.cg.demo" />-->
+	<bean id="client100" class="com.cg.assignment.Client">
+		<property name="empList" >
+			<list> 
+				<bean id="100" class="com.cg.assignment.Employee">
+					<property name="employeeId" value="100"/>
+					<property name="employeeName" value="Rishav"/>
+					<property name="salary" value="40510"/>
+					<property name="age" value="22"/>
+				</bean> 
+			</list>
+		</property>
+	</bean>
+	<bean id="client101" class="com.cg.assignment.Client">
+		<property name="empList" >
+			<list> 
+				<bean id="101" class="com.cg.assignment.Employee">
+					<property name="employeeId" value="101"/>
+					<property name="employeeName" value="Purav"/>
+					<property name="salary" value="41510"/>
+					<property name="age" value="22"/>
+				</bean> 
+			</list>
+		</property>
+	</bean>
+</beans>

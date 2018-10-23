@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component
+({
+	selector: 'my-emp', 
+	template: `<h3>{{emoId}}</h3> <h3>{{emoName}}</h3> <h3>{{sal}}</h3>`;
+})
+export class Employee
+{
+	empId:number=1001;
+	emoName:string="Rishav";
+	sal:number=50000;
+}

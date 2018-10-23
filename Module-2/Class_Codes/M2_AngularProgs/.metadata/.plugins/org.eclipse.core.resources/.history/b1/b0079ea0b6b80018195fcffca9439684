@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" [(ngModel)]="empId">
+	<input type="text" [(ngModel)]="empName">
+	<input type="text" [(ngModel)]="sal">
+	<h3>{{empId}}</h3> <h3>{{empName}}</h3> <h3>{{sal}}</h3>
+	<button (click)="resetData()">Reset</button>
+</body>
+</html>
