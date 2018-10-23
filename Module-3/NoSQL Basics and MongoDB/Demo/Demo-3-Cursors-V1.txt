@@ -1,0 +1,60 @@
+-------------------------------------------------Working----------------------------------------------------------------
+-Step-1) Install the software. 
+---------------------------------------------------------------------------------------------------------------------------
+Step-2) set the path variable in the environment variable option as
+	Set path=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\bin
+---------------------------------------------------------------------------------------------------------------------------
+Step-3) Run Command prompt as administrator
+---------------------------------------------------------------------------------------------------------------------------
+Step-4) mongod.exe  --logpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\log\cglog.log 
+	Note- --logpath option specifies alternate path for log files
+---------------------------------------------------------------------------------------------------
+Step-5) and start the MongoDB Server as follows
+	> mongod.exe  --dbpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\data\db
+	Note- --dbpath option specifies alternate path for data files
+		And this will show waiting for connections message on
+ 		The console output indicates that the mongod.exe 
+		Process is running successfully.
+		OR If you have C:\data\db folder you can also start mongo db using only
+		>mongod.exe
+-----------------------------------Working---------------------------------------------------------------------
+Step-6) Now Start Another command prompt in administrator Mode
+	1) After connected to monodb server type following command 
+		>mongo.exe
+	2) Show MongoDB database Lists using 
+		> show dbs
+			local  0.078GB
+--------------------------------------------------------------------------------------------
+ Ex-1)	Cursor Example
+	var myEmployee = db.employees.find( { salary : { $gt:70000 }});
+	while(myEmployee.hasNext()){print(tojson(myEmployee.next()));}
+---------------------------------------------------------------------------------------
+Ex-2)
+ var mycursor = db.employees.find().sort({"firstname" : -1}).limit(10).skip(2);
+while(mycursor .hasNext()){print(tojson(mycursor .next()));}
+-------------------------------------------------
+Ex-3)Cursor ForEach
+
+var myCurData = db.employees.find();
+myCurData.forEach( function(myDoc) { print( "firstname: " + myDoc.firstname ); } );
+
+----------------------------------------------------------------
+Ex-4 Fetch all employee Data One By One
+	> for(i=0; i<11; i++){db.employees.find().pretty();}
+	OR
+ 	>var myCursor = db.employees.find();
+	>while (myCursor .hasNext()) 
+	{
+		 obj = myCursor.next();	
+	}
+
+-------------------------------------------------------
+var myCurData = db.employees.find({"address.city":"Mumbai"}).snapshot()
+myCurData.forEach( function(myDoc) { print( "firstname: " + myDoc.firstname ); } );
+
+
+
+
+
+
+

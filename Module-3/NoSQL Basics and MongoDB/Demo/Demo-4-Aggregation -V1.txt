@@ -1,0 +1,74 @@
+-------------------------------------------------working-----------------------------------------------------------------
+Step-1) Install the software. 
+---------------------------------------------------------------------------------------------------------------------------
+Step-2) set the path variable in the environment variable option as
+	set path=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\bin
+---------------------------------------------------------------------------------------------------------------------------
+Step-3)Run Command prompt as administrator
+---------------------------------------------------------------------------------------------------------------------------
+Step-4) mongod.exe  --logpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\log\cglog.log 
+	Note- --logpath option specifies alternate path for log files
+---------------------------------------------------------------------------------------------------
+Step-5) and start the MongoDB Server as follows
+	> mongod.exe  --dbpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\data\db
+	Note- --dbpath option specifies alternate path for data files
+		And this will show waiting for connections message on
+ 		The console output indicates that the mongod.exe 
+		Process is running successfully.
+		OR If you have C:\data\db folder you can also start mongo db using only
+		>mongod.exe
+-----------------------------------Working---------------------------------------------------------------------
+Step-6) Now Start Another command prompt in administrator Mode
+	1) After connected to monodb server type following command 
+		>mongo.exe
+	2) Show MongoDB database Lists using 
+		> show dbs
+			local  0.078GB
+--------------------------------------------------------------------------------------------
+	
+	Ex-1-	Find employees with female gender
+	> db.employees.aggregate([{ $match: {"gender": "female" }}]);
+
+
+	Ex-2)Show Count Of Male and Female from employees
+		->db.employees.aggregate([{$group : {_id : "$gender", NoOfEmp : {$sum : 1}}}])
+
+	Ex-3) Show Count of Only Female from employees	 collections
+		db.employees.aggregate([{$match:{gender:"female"}},{$group:{_id: null,count:{$sum:1}}}])
+
+	Ex-4)Limit First 5 record
+		> db.employees.aggregate({$limit : 5 }).pretty()
+
+	Ex-5)> Separate Contacts of employees
+		db.employees.aggregate( [ { $unwind : "$contacts" } ] ).pretty()
+	
+	Ex-6>Find firstname    lastname and age for those employee having 
+		Age greater than 50 with first 5 record
+	
+	> db.employees.find({age:{$gt:50}},{firstname:1,lastname:1,age:1}).limit(5).pretty()
+
+	Ex-7) Convert last name in Uppercase and sort in ascending order
+		db.employees.aggregate([{ $project:{lname:{$toUpper:"$lastname"},_id:0}},{$sort:{lname:1}}])	
+
+		OR
+	Ex-8)	-Separate year month and day from Date Of Joining
+		>db.empdetails.aggregate([{$project:{year: { $year:"$DOB"},
+		 month:{$month:"$DOB"},day:{$dayOfMonth:"$DOB"},dayOfYear:{$dayOfYear:"$DOB"}, dayOfWeek: { $dayOfWeek: "$DOB" },week:{$week:"$DOB"}}}])
+
+
+
+	Ex-9)Find Department wise Maximum salary
+		> db.employees.aggregate([{$group:{_id: "$deptinfo._id",maxSal: {$max:"$salary"}}}])
+				{ "_id" : null, "maxSal" : 1200000 }
+				{ "_id" : 20, "maxSal" : 47000 }
+				{ "_id" : 40, "maxSal" : 20000 }
+				{ "_id" : 30, "maxSal" : 300000 }
+
+	Ex-10) Find Count of Emp Joined in each Each year
+			>db.empdetails.aggregate([{$group :{_id : {year: { $year: "$DOB" } }, count:{ $sum: 1 }}}])
+	
+	Ex-11)Print Depart wise first and last name 
+		->db.employees.aggregate([{$group:{_id:"$deptinfo._id",ListOfEmp:{$push:{fname:"$firstname",lname:"$lastname"}}}}])
+
+	
+>

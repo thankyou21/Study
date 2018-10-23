@@ -1,0 +1,150 @@
+-----------------------Insert Emp  Dept Info------------------------------------
+db.employees.insert([{_id:1,firstname:"Tanmaya",lastname:"Acharaya",DOB:new Date("1990-07-25"),deptinfo:{_id:30,deptname:"java"},mgrcode:7,gender:"Female",age:39,salary:39000.0,address:{street:"89,Common Street",city:"Ooty",state:"KS"},contacts:["9860567543","011-234333"],annlGrossSal:[{"year":2001,"gross":"100000"},{"year":2002,"gross":"250000"},{"year":2003,"gross":"350000"}]},
+    {_id:2,firstname:"Shilpa",lastname:"Bhosale",DOB:new Date("2002-03-11"),deptinfo:{_id:40,deptname:"testing"},mgrcode:8,gender:"Female",age:32,salary:20000.0,address:{street:"66,Airoli",city:"Mumbai",state:"MS"},contacts:["7656755555","022-2453335"],annlGrossSal:[{"year":1999,"gross":"500000"},{"year":2000,"gross":"400000"},{"year":2001,"gross":"800000"}]},
+    {_id:3,firstname:"Kadiresan",lastname:"Kaushik",DOB:new Date("1990-02-1"),deptinfo:{_id:30,deptname:"java"},mgrcode:7,gender:"Male",age:30,salary:25000.0,address:{street:"Sipcot",city:"Chennai",state:"TS"},contacts:["8888100077","044-321109"],annlGrossSal:[{"year":2001,"gross":"340000"},{"year":2002,"gross":"670000"},{"year":2003,"gross":"880000"}]},
+    {_id:4,firstname:"Vandana",lastname:"Koleshwar",DOB:new Date("2014-08-10"),deptinfo:{_id:20,deptname:"sap"},mgrcode:8,gender:"female",age:56, salary:47000.0,address:{street:"Thane Road",city:"Mumbai",state:"MS"},contacts:["8888100077","044-321109"],annlGrossSal:[{"year":2001,"gross":"5960000"},{"year":2002,"gross":"3470000"},{"year":2003,"gross":"7680000"}]},
+    {_id:5,firstname:"Sugumara",lastname:"H",DOB:new Date("2014-11-11"),deptinfo:{_id:30,deptname:"java"},mgrcode:7,gender:"male",age:23,salary:23000.0,address:{street:"T Market",city:"Chennai",state:"TS"},contacts:["9987600034","044-231222"],annlGrossSal:[{"year":2001,"gross":"960000"},{"year":2002,"gross":"470000"},{"year":2003,"gross":"560000"}]},
+    {_id:6,firstname:"Uma",lastname:"P",DOB:new Date(),deptinfo:{_id:30,deptname:"java"},mgrcode:8,gender:"female",age:53,salary:300000.0,address:{street:"MgRoad",city:"Mysoor",state:"KA"},contacts:["9430087878","011-888888"],annlGrossSal:[{"year":2001,"gross":"9000000"},{"year":2002,"gross":"3000000"},{"year":2003,"gross":"2000000"}]},
+    {_id:7,firstname:"Kavita",lastname:"Arora",DOB:new Date("2014-05-06"),deptinfo:{_id:30,deptname:"java"},mgrcode:8,gender:"female",age:53,salary:42000.0,address:{street:"Mulund Road",city:"Mumbai",state:"MS"},contacts:["9447666780","022-111111"],annlGrossSal:[{"year":2001,"gross":"4300000"},{"year":2002,"gross":"3300000"},{"year":2003,"gross":"2300000"}]},
+    {_id:8,firstname:"Mahima",lastname:"Sharma",DOB:new Date("2002-04-09"),gender:"female",age:53,salary:1200000.0,address:{street:"Pimpari Road",city:"Pune",state:"MS"},contacts:["9447666780","020-3454333"],annlGrossSal:[{"year":2001,"gross":"4000000"},{"year":2002,"gross":"2000000"},{"year":2003,"gross":"1000000"}]},
+])	
+---------Insert Data In student Collections-----------------------------
+
+db.students.insert({ _id: 5,name:"vaishali",grades:[
+			{ year:1999,sub:"phycics",grade: 80, mean: 75, std: 8 },
+			{year:1995,sub:"chemistry", grade: 85, mean: 90, std: 5 },
+			{year:1987,sub:"bio",grade: 90, mean: 85, std: 3 }]})
+
+
+		db.students.insert({ _id: 1,name:"amit",grades:[
+			{ year:2000,sub:"phycics",grade: 84, mean: 44, std: 6 },
+			{year:2001,sub:"chemistry", grade: 78, mean: 66, std: 3 },
+			{year:2002,sub:"bio",grade: 99, mean: 8, std: 44 }]})
+
+		db.students.insert({ _id: 3,name:"sumit",grades:[
+			{ year:2000,sub:"phycics",grade: 84, mean: 44, std: 6 },
+			{year:2001,sub:"chemistry", grade: 78, mean: 66, std: 3 },
+			{year:2002,sub:"bio",grade: 99, mean: 8, std: 44 }]})
+
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

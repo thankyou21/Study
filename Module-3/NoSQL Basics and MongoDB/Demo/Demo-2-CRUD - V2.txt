@@ -1,0 +1,351 @@
+-------------------------------------------------Working-----------------------------------------------------------------
+Step-1) Install the software. 
+---------------------------------------------------------------------------------------------------------------------------
+Step-2) set the path variable in the  environment variable option as
+	set path=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\bin
+---------------------------------------------------------------------------------------------------------------------------
+Step-3)Run Command prompt as administrator
+---------------------------------------------------------------------------------------------------------------------------
+Step-4) mongod.exe  --logpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\log\cglog.log 
+	Note- --logpath option specifies alternate path for log files
+---------------------------------------------------------------------------------------------------
+Step-5) And start the MongoDB Server as follows
+	> mongod.exe  --dbpath=D:\Srivastava\SoftwareRunning\MongoDB\mongodb\data\db
+	Note- --dbpath option specifies alternate path for data files
+		and This will show waiting for connections message on
+ 		the console output indicates that the mongod.exe 
+		Process is running successfully.
+		OR If you have C:\data\db folder You can also start mongo db using only
+		>mongod.exe
+-----------------------------------Working---------------------------------------------------------------------
+Step-6) Now Start Another command prompt in administrator Mode
+	1) After connected to monodb server type following command 
+		>mongo.exe
+	2) Show MongoDB database  Lists using 
+		> show dbs
+			local  0.078GB
+--------------------------------------------------------------------------------------------
+	3) Switch to your own DB as follows. If it is not present it will get created
+		>> use cgdb
+			Switched to db cgdb
+	   3.1) For Dropping Data base
+		>>db.dropDatabase();
+--------------------------------------------------------------------------------------------
+	4) After switching to your own database again, Show MongoDB database Lists using 
+		> show dbs
+			local  0.078GB
+		Note: If nothing is shown that means there are no documents in your own db.
+--------------------------------------------------------------------------------------------
+	5) So we will add at least one document in the cgdb database
+		> db.cgdb.insert({})
+			WriteResult({ "nInserted" : 1 })			
+		>> db.cgdb.insert({name:'vaishali'})
+			WriteResult({ "nInserted" : 1 })
+--------------------------------------------------------------------------------------------
+	6) Show MongoDB database Lists again
+		> show dbs
+			cgdb   0.078GB
+			local  0.078GB
+--------------------------------------------------------------------------------------------
+	7) Now We can   create collections in the document of our database.
+		It is as good as creating the table in RDBMS database.
+			> db.createCollection("employees")
+				{ "ok" : 1 }
+		And
+			Create student collections
+			> db.createCollection("students")
+--------------------------------------------------------------------------------------------
+	8) Show the collections.		
+		> show collections
+			cgdb
+			employees
+			system.indexes
+--------------------------------------------------------------------------------------------
+	9) Show the data from  "employee" collections
+		>db.employees.findOne()
+			null
+		> db.employees.find()
+--------------------------------------------------------------------------------------------
+	Ex-10)> Insert Data In employees Collections
+		>db.employees.insert({_id:111,firstname:"Anita",lastname:"Gokhle"})		
+		>db.employees.insert({_id:333,firstname:"Raja",lastname:"Josji",age:30,salary:80000.0,isEmployee:true})
+		>db.employees.insert({_id:444,firstname:"Santosh",lastname:"Pakhale",age:10,salary:30000.0,isEmployee:false})
+		>db.employees.insert({_id:555,firstname:"Harishwar",lastname:"Mendre"})
+		>db.employees.insert({_id:222,firstname:"Vaishali",lastname:"Joshi",age:23,salary:22000.0,isEmployee:true})						
+				OR
+		db.employees.save({_id:2,firstname:"Vaishali",lastname:"Joshi",age:23,salary:22000.0,isEmployee:true})					
+
+-------------------------------------------------------------------------------------------------
+	11) Show Data From employees collections
+		> db.employees.find()
+			{ "_id" : ObjectId("5ae5def01c15cddd772063da"), "firstname" : "vaishali", "lastn
+			ame" : "srivastava" }
+			{ "_id" : ObjectId("5ae5dfa11c15cddd772063db"), "firstname" : "vaishali", "lastn
+			ame" : "srivastava", "age" : 20, "salary" : 20000, "isEmployee" : true }
+			{ "_id" : ObjectId("5ae5e0701c15cddd772063dc"), "firstname" : "rahul", "lastname
+			" : "vikas", "age" : 30, "salary" : 80000, "isEmployee" : true }
+			{ "_id" : ObjectId("5ae5e0991c15cddd772063dd"), "firstname" : "anjulata", "lastn
+			ame" : "temphare", "age" : 10, "salary" : 30000, "isEmployee" : false }
+
+			
+
+				OR
+		Fetch employees based on unique id value
+		> db.employees.find({ "_id" : ObjectId("5ae5e0991c15cddd772063dd")})
+
+		OR show all employee details without firstname, lastname, address field
+		>db.employees.find({},{"firstname":0,"lastname":0,"address":0}).pretty()
+
+
+------------------------------------------------------------------------------------------------------------------
+	12)Add array of employee objects	
+		>db.employees.insert([{firstname:"vrushali",lastname:"Tambe",age:30,salary:12000.0,isEmployee:false},{firstname:"sameer",lastname:"kanase",age:24,salary:15000.0,isEmployee:true}])
+--------------------------------------------------------------------------------------------------------
+	13) Find all data with pretty function
+		> db.employees.find().pretty()
+
+------------------------------------------------------------------------------------------------------------
+	14)Update employee using name
+	 	> db.employees.update({firstname:"vaishali"},{firstname:"vaishali",lastname:"shrivastava",age:40})
+		WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+		Note-But in above query again we have set last name and firstname with same value
+------------------------------------------------------------
+	15)Update employee  and add only salary field  in existing record
+		> db.employees.update({firstname:"Anita"},{$set:{salary:6000}})
+		Note:-using set its going to keep what is already there and add only salary
+--------------------------------------------------------------
+	16)Update salary of anjulata by 5000
+		> db.employees.update({firstname:"anjulata"},{$inc:{salary:500}})
+			WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+------------------------------------------------------------------------------------------------------------------------
+	17) Use Unset Operator to remove the field
+		> db.employees.update({firstname:"vrushali"},{$unset:{lastname:1}})
+			WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+		Note:-Above command will remove last name field for vrushali
+
+			OR
+		Update age of all records having firstname "shilpa"
+		> db.employees.update({firstname:"shilpa"},{$set:{age:66}},{multi:true})
+
+			OR
+		Update Anjulata with food like array
+			> db.employees.update({firstname:"Anita"},{$set:{foodILike:["pizza","idali"]}})
+		
+		OR
+		Update existing record.Push one more entry in  array of  foodILike 
+			>  db.employees.update({firstname:"Anita"},{$push:{foodILike:"Rice"}})
+		
+		OR
+		pop data from foodILike array for anjulata
+		> db.employees.update({firstname:"anjulata"},{$pop:{foodILike:"pizza"}})
+
+		OR
+		pull data from foodILike array for anjulata irrespective of location
+		> db.employees.update({firstname:"anjulata"},{$pull:{foodILike:"pizza"}})
+
+		OR
+		>db.employees.update({firstname:"anjulata"},{$pullAll:{foodILike:["Rice","Dal"]}})
+
+		OR
+		
+		 db.employees.update({firstname:"anjulata"},{$addToSet:{foodILike:"idali"}})
+		
+
+		OR  Positional Operator
+
+--------------------------------------------------------------------------------------------------------	
+	18)    Update the record if existing and insert if not existing
+	> db.employees.update({firstname:"tanmaya"},{firstname:"tanmaya",lastname:"achar
+			ya"},{upsert:true})
+		Note: Because Tanmaya is not present it will get inserted
+	
+--------------------------------------------------------------------------------------------------------------------
+	19) Rename the column lastname to last_name for  employee "tanmaya"
+	> db.employees.update({firstname:"tanmaya"},{$rename:{"lastname":"last_name"}})
+		WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+-----------------------------------------------------------------------------------------------------------------
+	20) Remove document with firstname "Tanmaya"
+		> db.employees.remove({firstname:"tanmaya"})
+			WriteResult({ "nRemoved" : 1 })
+
+		OR
+	    Remove all documents which firstname starts with "v"
+		> db.employees.remove({ "firstname": /^v/  })
+
+		OR
+		Remove only first document found with firstname "Rahul"
+		> db.employees.remove({ "firstname":"Rahul"},1)
+
+		OR Remove all records
+			>db.employees.remove({})
+
+------------------------------------------------------------------------------------------------
+	21) Add More Data As follows
+		>db.employees.insert([
+    		{
+		 firstname:"Tanmaya",
+  		 lastname:"Acharaya",
+  	 	 gender:"Male",
+  		 age:50,
+  		 salary:90000.0,
+  		 address:
+		 {
+			street:"44,Whitefield",
+			city:"Banglore",
+			state:"KS"
+		 },
+		 contacts:["9878666666","030-34556"]
+    		},
+    		{
+			 firstname:"shilpa",
+  			 lastname:"bhosale",
+  			 gender:"Male",
+  	 		 age:60,
+  	 		 salary:45000.0,
+  	 		 address:
+	 		 {
+				street:"67,MGRoad",
+				city:"Mumbai",
+				state:"MS"
+	 		 },
+	 		contacts:["88888108810","020-787777"]
+    		},
+    		{
+			 firstname:"Kadiresan",
+  			 lastname:"K",
+  	 		 gender:"Male",
+  	 		 age:29,
+  	 		 salary:80000.0,
+  	 		 address:
+			 {
+				street:"Sipcot",
+				city:"Chennai",
+				state:"TS"
+			 },
+			 contacts:["7786666666","044-878888"]
+   		 },
+		{
+			 firstname:"Rahul",
+  			 lastname:"Kulkarni",
+  	 		 gender:"Male",
+  	 		 age:34,
+  	 		 salary:32000.0,
+  	 		 address:
+			 {
+				street:"Aundh",
+				city:"Pune",
+				state:"MS"
+			 },
+			 contacts:["9889788864","99-888679"]
+   		 }
+	])
+------------------------------------------------------------------------------------------
+	22) Insert one more document with same name
+		>db.employees.insert({firstname:"Rahul",lastname:"Kulkarni",gender:"Male",age:34,salary:32000.0,address:{street:"Aundh",city:"Pune",state:"MS"},contacts:["9889788864","99-888679"]})
+			WriteResult({ "nInserted" : 1 })
+		
+----------------------------------------------------------------------------------------------------------------
+	23) Find Documents with firstname Rahul
+		>db.employees.find({firstname:"Rahul"})
+------------------------------------------------------------------------------
+	24) Find the document for either Rahul Or Tanmaya
+		>> db.employees.find({$or:[{firstname:"Rahul"},{firstname:"Tanmaya"}]})
+--------------------------------------------------------------------------------------------
+	25)Find the documents for those whose age is greater than 40
+		> db.employees.find({age:{$gt:40}})
+	Note-$gte  and $lte for grater than  and less than  equals to
+
+--------------------------------------------------------------
+	26)Find firstname lastname and age for those employee having 
+		age greater than 50 with first 5 record
+	
+	> db.employees.find({age:{$gt:50}},{firstname:1,lastname:1,age:1}).limit(5).pretty()
+{
+        "_id" : ObjectId("5ae7ee6465cef006130f1abb"),
+        "firstname" : "shilpa",
+        "lastname" : "bhosale",
+        "age" : 55
+}
+{
+        "_id" : ObjectId("5ae8862d65cef006130f1abe"),
+        "firstname" : "shilpa",
+        "lastname" : "sharma",
+        "age" : 55
+}
+{
+        "_id" : ObjectId("5aeb01bab190985244cff581"),
+        "firstname" : "shilpa",
+        "lastname" : "bhosale",
+        "age" : 60
+}
+{
+        "_id" : ObjectId("5aeb01c5b190985244cff584"),
+        "firstname" : "shilpa",
+        "lastname" : "bhosale",
+        "age" : 60
+}
+>
+
+-------------------------------------------------------------------------
+----------------------------------------------------------------------------
+	27) Find the document  with city "pune"
+		> db.employees.find({"address.city":"Pune"})
+--------------------------------------------------------------------------------
+	28) Sort Document  By lastname
+	> db.employees.find().sort({lastname:-1})
+	   OR
+	  db.employees.find().sort({lastname:1})
+		OR
+	db.employees.find().sort({lastname:-1}).pretty()
+-------------------------------------------------------------------------
+	29)Count Number Of documents from employees
+		> db.employees.find().count()
+
+---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+	30)Update Shilpa's Gender
+	> db.employees.update({firstname:"shilpa"},{$set:{gender:"Female"}})
+---------------------------------------------------------------------------------
+	
+	31)Find First 4 documents from employee
+		> db.employees.find().limit(4)
+		> db.employees.find().limit(4).sort({lastname:1})
+---------------------------------------------------------------------------
+	32)Print Reports of employee Name and salary
+	> db.employees.find().forEach(function(doc){print("Employee Name: "+doc.firstname +"    Salary :"+doc.salary)})
+		Employee Name: vaishali    Salary :600000
+		Employee Name: vaishali    Salary :20000
+		Employee Name: Rahul    Salary :80000
+		Employee Name: anjulata    Salary :30500
+		Employee Name: vrushali    Salary :12000
+		Employee Name: sameer    Salary :15000
+		Employee Name: Tanmaya    Salary :90000
+		Employee Name: shilpa    Salary :45000
+		Employee Name: Kadiresan    Salary :80000
+		Employee Name: Rahul    Salary :32000
+
+--------------------------------------------------------------------------------
+	33) Find the employees having matching salary   as 2000  or 32000
+
+		->db.employees.find( { salary: { $in: [ 2000, 30000 ] } } )
+		Note:-This is as good as IN operator of oracle
+
+-------------------------------------------------------------------------
+	34) Find record having age <34 Or salary greater than 5000
+
+		>db.employees.find( { $or: [ { age:{ $lte: 34 } }, { salary:{$gt:50000}}]})
+
+		OR
+
+		Find record having age <34 and salary greater than 5000
+
+		>db.employees.find( { $and: [ { age:{ $lte: 34 } }, { salary:{$gt:50000}}]})
+
+		Find all employee having given all contacts
+		> db.employees.find({contacts:{$all : ["7786666666","044-878888"]}}).count()
+
+		Find all male  employees staying in "Pune"
+		> db.employees.find({"address.city":"Pune","gender":"Male"}).pretty()
+		
+-------------------------------------------------------------------
