@@ -1,7 +1,8 @@
 To run BankingSystem Project using MicroServices...
 
 1) Import all microservices in eclipse as exisiting maven projects
-2) Run eureka server (localhost:8761)
-3) Run all microservices (for port & dbname check application.properties)
-4) Run BankingClient
-5) Go to browser and run localhost:8761,copy the links and run PostMethods using postman and GetMethods using browser 
+2) Eclipse -> Windows -> Preferences -> Maven -> User Settings -> Browse (settings.xml from Maven folder) 
+3) Run eureka server (localhost:8761)
+4) Run all microservices (for port & dbname check application.properties)
+5) Run BankingClient
+6) Go to browser and run localhost:8761,copy the links and run PostMethods using postman and GetMethods using browser 
